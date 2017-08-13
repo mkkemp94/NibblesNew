@@ -3,6 +3,7 @@ package com.mkemp.nibbles.tools;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -39,6 +40,7 @@ public class Controller {
 
         Image upImage = new Image(new Texture("up2.png"));
         upImage.setSize(controllerDimens, controllerDimens);
+        CircleShape upCircle = new CircleShape();
         upImage.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -100,15 +102,15 @@ public class Controller {
         table.setFillParent(true);
 
         table.add();
-        table.add(upImage).size(upImage.getWidth(), upImage.getHeight());
+        table.add(upImage).size(upImage.getWidth()*2, upImage.getHeight());
         table.add();
-        table.row().pad(5, 5, 5, 5);
-        table.add(leftImage).size(leftImage.getWidth(), leftImage.getHeight());
+        table.row();
+        table.add(leftImage).size(leftImage.getWidth(), leftImage.getHeight()*2);
         table.add();
-        table.add(rightImage).size(rightImage.getWidth(), rightImage.getHeight());
+        table.add(rightImage).size(rightImage.getWidth(), rightImage.getHeight()*2);
         table.row().padBottom(5);
         table.add();
-        table.add(downImage).size(downImage.getWidth(), downImage.getHeight());
+        table.add(downImage).size(downImage.getWidth()*2, downImage.getHeight());
         table.add();
 
         stage.addActor(table);
